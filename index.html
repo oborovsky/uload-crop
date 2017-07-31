@@ -20,8 +20,10 @@
 			<label><input type="radio" name="size" value='200' checked onchange="setSize(this)">200x200</label>
 			<label><input type="radio" name="size" value='300' onchange="setSize(this)">300x300</label>
 			<input type="reset" name="reset" value='Очистить' class='reset_btn' onclick="clearFile()">
-			<input type='submit' name='submit' value='Сохранить' class='save_btn' >
-
+			<input type='submit' name='submit' value='Сохранить' class='save_btn' onclick="closeUpload()" >
+			<div class='newName'><input type='text' name='newName' value='' placeholder="Новое имя файла" class='newFileName'></div>
+			<div class='sizeFile'><input type='text' name='newName' value='' placeholder="размер файла" class='newFileName'></div>
+			<div class='clear'></div>
 			<input type="hidden" id="x" name="x" />
 	        <input type="hidden" id="y" name="y" />
 	        <input type="hidden" id="w" name="w" />
