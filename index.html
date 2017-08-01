@@ -13,15 +13,17 @@
 <body>
 <input type="button" name="button" onclick="openUpload()" value='upload'>
 <div id='popup_upload'>
-	<div id='upload_crop' class="container">
-	<span class="close" onclick="closeUpload()" id='close'>x</span>
+	<div id='upload_crop' class="upload-container">
+	<span class="upload-close" onclick="closeUpload()" id='close'>x</span>
 		<form name='upload_form' id='upload_form' action='upload_file.php' method='post' enctype="multipart/form-data" target = 'upload_frame'>
 			<input type='file' name='phote' id='phote' onchange = "loadFile(this.files)" class='upload_btn'>
 			<label><input type="radio" name="size" value='200' checked onchange="setSize(this)">200x200</label>
 			<label><input type="radio" name="size" value='300' onchange="setSize(this)">300x300</label>
-			<input type="reset" name="reset" value='Очистить' class='reset_btn' onclick="clearFile()">
-			<input type='submit' name='submit' value='Сохранить' class='save_btn' >
-
+			<input type="reset" name="reset" id='reset' value='Очистить' class='reset_btn' onclick="clearFile()">
+			<input type='submit' name='submit' value='Сохранить' class='save_btn' onclick="closeUpload()" >
+			<div class='upload-newName'><input type='text' name='newName' id='newName' value='' placeholder="Новое имя файла" class='upload-newFileName'></div>
+			<div class='upload-sizeFile'><input type='text' name='sizeFile' id='sizeFile' value='' placeholder="размер файла" class='upload-newFileName'></div>
+			<div class='clear'></div>
 			<input type="hidden" id="x" name="x" />
 	        <input type="hidden" id="y" name="y" />
 	        <input type="hidden" id="w" name="w" />

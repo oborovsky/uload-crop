@@ -50,8 +50,8 @@ var source_h = 200;
 			var name_img2 = document.getElementById('name_img2');
 			var base_name = name.split('.');
 
-			name_img1.innerHTML = base_name[0] + '_i.' + base_name[1];
-			name_img2.innerHTML = base_name[0] + '_pic.' + base_name[1];
+			name_img1.innerHTML = base_name[0] + '_thumb.' + base_name[1];
+			name_img2.innerHTML = base_name[0] + '.' + base_name[1];
 			preview1.appendChild(img1);
 			preview2.appendChild(img2);
 
@@ -133,6 +133,8 @@ function closeUpload()
 }
 function openUpload()
 {
+	$('#reset').click();
+	clearFile();
 	var id = '#popup_upload';
 	$(id).show();
 }

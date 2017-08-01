@@ -1,5 +1,5 @@
 
-.container 
+.upload-container 
 {
 	width: 1000px;
 	height: auto;
@@ -98,7 +98,7 @@
 	height: 0;
 	display: none;
 }
-.close {
+.upload-close {
     /*position: absolute;*/
     float: right;
     /*display: block;*/
@@ -115,7 +115,7 @@
     font-weight: bold;
     margin:5px 15px 0 0;
 }
-.close:hover {
+.upload-close:hover {
     background: #cccccc;
 }
 #popup_upload
@@ -130,4 +130,24 @@
 	text-align: center;
 	display: none;
 	overflow: auto;
+}
+.upload-newFileName
+{
+	background: #cccccc;
+	color: #333333;
+	width:400px;
+	height: 30px;
+	border-radius: 10px;
+	font-size: 16px;
+	line-height: 30px;
+	font-weight: bold;
+	margin:20px 20px;
+}
+.upload-newName 
+{
+	float:left;
+}
+.upload-sizeFile
+{
+	float:right;
 }
