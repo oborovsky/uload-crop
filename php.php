@@ -1,26 +1,50 @@
 <?php
-$dir="/0";
-if(isset($_GET['id'])) $dir='/'.$_GET['id'];
-if(isset($_POST['id'])) $dir='/'.$_POST['id'];
+// $dir="/0";
+// if(isset($_GET['id'])) $dir='/'.$_GET['id'];
+// if(isset($_POST['id'])) $dir='/'.$_POST['id'];
 
 class qqUploadedFileXhr {
     function save($path) {    
-        $input = fopen("php://input", "r");
+    	$src = $_FILES['phote']['tmp_name'];
+        $input = fopen($src, "r");
         $temp = tmpfile();
         $realSize = stream_copy_to_stream($input, $temp);
         fclose($input);
         
         if ($realSize != $this->getSize()) return false;
-        if(!strpos($path,"_")) $target = fopen($path.".jpg", "w");
-        else {$path1=explode("_",$path,2); $target = fopen($path1[0]."_thumb.jpg", "w"); }
+        $target = fopen($path.".jpg", "w");
         fseek($temp, 0, SEEK_SET);
         stream_copy_to_stream($temp, $target);
         fclose($target);
+
+        $targ_w = $_POST['target_w'];
+		$targ_h = $_POST['target_h'];
+		$source_w = $_POST['source_w'];
+		$source_h = $_POST['source_h'];
+
+		$aspectRation  = $source_w / $source_h;
+
+		// quality
+		$jpeg_quality = 90;
+		// photo path
+		// create new jpeg image based on the target sizes
+		$img_r = imagecreatefromjpeg($src);
+		$dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
+		// crop photo
+		imagecopyresampled($dst_r,$img_r,0,0,$_POST['x'],$_POST['y'], $targ_w,$targ_h,$_POST['w'],$_POST['h']*$aspectRation);
+		// create the physical photo
+		$src = fopen($path.'_thumb.jpg');
+		imagejpeg($dst_r,$src,$jpeg_quality);
         
         return true;
     }
     function getName() {
-        return $_GET['qqfile'];
+    	$name = $_FILES['phote']['name'];
+    	if ( isset($_POST['newName']) )
+		{
+			$name = $_POST['newName'].pathinfo($_FILES['phote']['name'])['extension'];
+		}
+        return $name;
     }
     function getSize() {
         if (isset($_SERVER["CONTENT_LENGTH"])){
@@ -44,7 +68,7 @@ class qqFileUploader {
         
         $this->checkServerSettings();       
 
-        if (isset($_GET['qqfile'])) $this->file = new qqUploadedFileXhr();
+        if (isset($_FILES['phote']['tmp_name'])) $this->file = new qqUploadedFileXhr();
         else
         {
             $this->file = false;
@@ -96,44 +120,11 @@ class qqFileUploader {
     }    
 }
 
-$allowedExtensions = array("png","jpeg","jpg","JPEG","JPG");
+$allowedExtensions = array("jpeg","jpg","JPEG","JPG");
 // max file size in bytes
 $sizeLimit = 10485760;
-if ($_POST['new'] != 'new') {
-    $uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
-    $result = $uploader->handleUpload('../../../gallery'.$dir.'/');
-     //to pass data through iframe you will need to encode all html tags
-    echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);
-}
-else {
 
-    $path = '../../../gallery'.$dir.'/';
-    $src = $_FILES['phote']['tmp_name'];
-    $name = $_FILES['phote']['name'];
-    $name = explode('.', $name);
-    $name = $name[0];
-    
-    $photo_dest = $path.$name.'.jpg';
-    // copy the photo from the tmp path to our path
-    copy($src, $photo_dest);
-    
-    $targ_w = $_POST['target_w'];
-    $targ_h = $_POST['target_h'];
-    $source_w = $_POST['source_w'];
-    $source_h = $_POST['source_h'];
-    $aspectRation  = $source_w / $source_h;
-    // quality
-    $jpeg_quality = 90;
-    // photo path
-    
-    // create new jpeg image based on the target sizes
-    $img_r = imagecreatefromjpeg($src);
-    $dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
-    // crop photo
-    imagecopyresampled($dst_r,$img_r,0,0,$_POST['x'],$_POST['y'], $targ_w,$targ_h,$_POST['w'],$_POST['h']*$aspectRation);
-    // create the physical photo
-    imagejpeg($dst_r,$src,$jpeg_quality);
-    $photo_dest = $path.$name.'_thumb.jpg';
-    copy($src, $photo_dest);
-    echo "Ok";
-}
+$uploader = new qqFileUploader($allowedExtensions, $sizeLimit);
+$result = $uploader->handleUpload('../../../gallery'.$dir.'/');
+ //to pass data through iframe you will need to encode all html tags
+echo htmlspecialchars(json_encode($result), ENT_NOQUOTES);

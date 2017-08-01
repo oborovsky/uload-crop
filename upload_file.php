@@ -6,12 +6,11 @@ echo "start";
 
 $dir = 'images/';
 $src = $_FILES['phote']['tmp_name'];
-$name = $_FILES['phote']['name'];
-$name = explode('.', $name);
-$name = $name[0];
+$name = pathinfo($_FILES['phote']['name']);
 if ( isset($_POST['newName']) )
 {
-	$name = $_POST['newName'];
+	$name['basename'] = $_POST['newName'];
+	$name['filename'] = $_POST['newName'].$name['extension']
 }
 
 $photo_dest = 'images/'.$name.'.jpg';
