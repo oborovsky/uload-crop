@@ -9,6 +9,10 @@ $src = $_FILES['phote']['tmp_name'];
 $name = $_FILES['phote']['name'];
 $name = explode('.', $name);
 $name = $name[0];
+if ( isset($_POST['newName']) )
+{
+	$name = $_POST['newName'];
+}
 
 $photo_dest = 'images/'.$name.'.jpg';
 	// copy the photo from the tmp path to our path

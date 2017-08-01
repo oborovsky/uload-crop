@@ -82,6 +82,7 @@
 {
 	float:left;
 	margin-left:10px;
+	position: relative;
 }
 #preview2
 {
@@ -150,4 +151,13 @@
 .upload-sizeFile
 {
 	float:right;
+}
+.upload-container  #sizeSelectRect
+{
+	position: absolute;
+	line-height: 20px;
+	font-weight: bold;
+	font-size:15pt;
+	top: -10px;
+	left:10px;
 }
