@@ -11,11 +11,22 @@
 
 </head>
 <body>
-<input type="button" name="open_btn" id='open_btn' value='upload'>
+<table border="1" id='table'>
+<tr>
+	<td><img src='images/71432875_0386_thumb.jpg' width="80" height="80"></td>
+	<td><img src='images/71432875_0386.jpg' width="80" height="80"></td>
+</tr>
+<tr>
+	<td><img src='images/2elephans_thumb.jpg' width="80" height="80"></td>
+	<td><img src='images/2elephans.jpg' width="80" height="80"></td>
+</tr>
+
+</table>
+<input type="button" name="open_btn" id='open_btn' value='upload' class='open_btn'>
 <div id='popup_upload'>
 	<div id='upload_crop' class="upload-container">
 	<span class="upload-close"  id='close_btn'>x</span>
-		<form name='upload_form' id='upload_form' action='php.php' method='post' enctype="multipart/form-data" target = 'upload_frame'>
+		<form name='upload_form' id='upload_form' action='upload_file.php' method='post' enctype="multipart/form-data" target = 'upload_frame'>
 			<input type='file' name='phote' id='upload_btn'  class='upload_btn'>
 			<label><input type="radio" name="size" value='200' checked >200x200</label>
 			<label><input type="radio" name="size" value='300' >300x300</label>

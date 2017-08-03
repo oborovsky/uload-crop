@@ -180,3 +180,28 @@ function Crop_Form(options)
 //end class Crop_Form
 
 var crop_form = new Crop_Form({ elem:$('#popup_upload'),open_btn:$('#open_btn')});
+$('#table').on('click', 'tr', onEditPhote);
+function onEditPhote(event)
+{
+	var tr = event.target;
+	var i = 20;
+	while( tr.tagName.toUpperCase() != "TR" && i > 0) {
+		tr = tr.parentElement;
+		i--;
+	}
+	if ( i == 0) {
+		console.log('не нашел строку в таблице, содеращей картинки');
+		return true;
+	}
+	var img1 = tr.querySelectorAll('img')[0];
+	var img2 = tr.querySelectorAll('img')[1];
+	console.log('img1:', img1.src);
+	console.log('img2:',img2.src);
+	editPhoteInTable(img1.src, img2,src)
+
+
+}
+function editPhoteInTable(src1, src2)
+{
+	
+}

@@ -22,8 +22,9 @@
 	line-height: 30px;
 	font-weight: bold;
 	display: inline-block;
-	padding: 0 10px 0 10px;
+	padding: 010px 0 10px;
 	cursor: pointer;
+
 }
 
 .reset_btn,
@@ -33,10 +34,15 @@
 	margin:5px 15px 0 0;
 	border-radius: 8px;
 }
-
+.open_btn
+{
+	margin:5px 15px 0 0;
+	border-radius: 8px;	
+}
 .upload_btn:hover,
 .reset_btn:hover,
-.save_btn:hover
+.save_btn:hover,
+.open_btn:hover
 {
 	background: #eaeaea;
 }
