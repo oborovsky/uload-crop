@@ -43,8 +43,12 @@
 	        <input type="hidden" id='target_h' name='target_h' value = 200 />
 	        <input type="hidden" id='source_w' name='source_w'  />
 	        <input type="hidden" id='source_h' name='source_h'  />
+	        <input type="hidden" id='edit' name='edit' value='false' />
+	        <input type="hidden" id='reload' name='reload' value='false' />
+	        <input type="hidden" id='loadOneFile' name='loadOneFile' value='false' />
+	        <input type="hidden" id='srcName' name='srcName' value='' />
 		</form>
-		<div id='preview1'><span id='sizeSelectRect' class='sizeSelectRect'>size</span><div id='img1'></div><div id='name_img1'></div></div>
+		<div id='preview1'><span id='sizeSelectRect' class='sizeSelectRect'>size</span><div id='img1'></div><div id='name_img1'></div></div><div id='overUpload' class='overUpload'>&lt;=</div>
 		<div id='preview2'><div id='img2'></div><div id='name_img2'></div></div>
 		<div class='clear'></div>
 		<iframe name="upload_frame" class="upload_frame"></iframe>
