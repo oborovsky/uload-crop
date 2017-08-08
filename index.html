@@ -5,9 +5,11 @@
 	<meta charset='utf-8'>
 	<link rel='stylesheet' type'txt/css' href='css/upload_crop.css'>
 	<link rel='stylesheet' type'txt/css' href='css/jquery.Jcrop.min.css'>
+	<link rel='stylesheet' type'txt/css' href='css/help_info.css'>
 	<script type="text/javascript" src='js/jquery.min.js'></script>
 	<script type="text/javascript" src='js/jquery.Jcrop.min.js'></script>
 	<script type="text/javascript" src='js/upload_crop.js' defer ></script>
+	<script type="text/javascript" src='js/help_info.js' defer ></script>
 
 </head>
 <body>
@@ -30,6 +32,7 @@
 			<input type='file' name='phote' id='upload_btn'  class='upload_btn'>
 			<label><input type="radio" name="size" value='200' checked >200x200</label>
 			<label><input type="radio" name="size" value='300' >300x300</label>
+			<span class='help-info' id='help-info' data-id-help-info='1'>i</span>
 			<input type="reset" name="reset" id='reset_btn' value='Очистить' class='reset_btn'>
 			<input type='submit' name='submit' id='save_btn' value='Сохранить' class='save_btn'>
 			<div class='upload-newName'><input type='text' name='newName' id='newName' value='' placeholder="Новое имя файла" class='upload-newFileName'></div>

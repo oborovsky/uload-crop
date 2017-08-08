@@ -141,6 +141,26 @@
 .upload-close:hover {
     background: #cccccc;
 }
+.help-info {
+    /*position: absolute;*/
+    float: right;
+    /*display: block;*/
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 16px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background: #F0F0F0;
+    text-align: center;
+    font-weight: bold;
+    margin:5px 15px 0 0;
+}
+.help-info:hover {
+    background: #cccccc;
+}
 #popup_upload
 {
 	position: fixed;
